@@ -44,3 +44,7 @@
 .photoContainer {
   padding: 5px;
 }
+
+.calendar {
+  font-family: 'philosopher', sans-serif;
+}
