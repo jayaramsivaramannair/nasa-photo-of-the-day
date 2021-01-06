@@ -4,10 +4,10 @@ import "./App.css";
 function Description({credit, date, title,explanation}) {
     return (
         <div className="photoDescription">
-            <p><em>Photo Credit</em> : {credit}</p>
-            <p><em>Image Date</em>: {date}</p>
-            <p><em>Title</em>: {title}</p>
-            <p><em>Explanation</em>: {explanation}</p>
+            <p><span>Photo Credit</span> : {credit}</p>
+            <p><span>Image Date</span>: {date}</p>
+            <p><span>Title</span>: {title}</p>
+            <p><span>Explanation</span>: {explanation}</p>
         </div>
     );
 }

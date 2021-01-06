@@ -3,41 +3,41 @@ import "./App.css";
 import axios from 'axios';
 import Description from './Description';
 import Photo from './Photo';
+import Quotation from './Quotation';
+import Explore from './Explore';
+
+const myApiKey = "Z2STqlW4cLLKE802inaTm6UmBb0I6tleu2xo7OWY"
 
 function App() {
 
-  const[database, setDatabase] = useState({"copyright":"Jen Scott","date":"2020-11-19","explanation":"Leaving planet Earth for a moment, a SpaceX Falcon 9 rocket arced into the early evening sky last Sunday at 7:27 pm EST from Kennedy Space Center's Launch Complex 39A. This 3 minute 20 second exposure traces the launch streak as seen over watery reflections from Port Canaveral, about 15 miles south of the launch. The rocket carried four astronauts en route to the International Space Station on the first flight of a NASA-certified commercial human spacecraft system. Dubbed Resilience, the astronauts' Crew Dragon spacecraft successfully docked with the orbital outpost one day later, on Monday, November 16. At the conclusion of their six-month stay on the ISS, the Crew-1 astronauts will use their spacecraft to return to Earth. Of course about 9 minutes after launch the Falcon 9 rocket's first stage returned to Earth, landing in the Atlantic Ocean on autonomous spaceport drone ship Just Read The Instructions.","hdurl":"https://apod.nasa.gov/apod/image/2011/spacex-crew-1-JenScottPhotography-11.jpg","media_type":"image","service_version":"v1","title":"Crew-1 Mission Launch Streak","url":"https://apod.nasa.gov/apod/image/2011/spacex-crew-1-JenScottPhotography-11_1050.jpg"});
+  const[database, setDatabase] = useState({"copyright":"Jos\u00e9 Mtanous","date":"2021-01-05","explanation":"What is the Small Magellanic Cloud? It has turned out to be a galaxy.  People who have wondered about this little fuzzy patch in the southern sky included Portuguese navigator Ferdinand Magellan and his crew, who had plenty of time to study the unfamiliar night sky of the south during the first circumnavigation of planet Earth in the early 1500s. As a result, two celestial wonders easily visible for southern hemisphere skygazers are now known in Western culture as the Clouds of Magellan. Within the past 100 years, research has shown that these cosmic clouds are dwarf irregular galaxies, satellites of our larger spiral Milky Way Galaxy. The Small Magellanic Cloud actually spans 15,000 light-years or so and contains several hundred million stars. About 210,000 light-years away in the constellation of the Tucan (Tucana), it is more distant than other known Milky Way satellite galaxies, including the Sagittarius Dwarf galaxy and the Large Magellanic Cloud. This sharp image also includes the foreground globular star cluster 47 Tucanae on the right.","hdurl":"https://apod.nasa.gov/apod/image/2101/SMC_Mtanous_4464.jpg","media_type":"image","service_version":"v1","title":"The Small Cloud of Magellan","url":"https://apod.nasa.gov/apod/image/2101/SMC_Mtanous_960.jpg"});
   
-  /*
+  
   /* Makes the request only on initial render */
   /*
   useEffect(() => {
-    axios.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2020-11-19")
-    .then((response) => console.log(response.data));
+    axios.get(`https://api.nasa.gov/planetary/apod?api_key=${myApiKey}`)
+    .then((response) => {console.log(response); setDatabase(response.data)})
+    .catch((error) => console.log(error))
   }, [])
   */
   
-  
-  
-  //response.data.copyright
-  //response.data.date
-  //response.data.title
-  //response.data.explanation
 
-
+  if(!database.url) return <h3>Loading....</h3>
   return (
-    <div className="App">
-      <h1 className='header'>NASA Photos - Wonder & Explore!</h1>
-      <div>
-        <Photo url={database.url} title={database.title}/>
+      <div className="App">
+        <h1 className='header'>NASA Photo of the Day - Wonder & Explore!</h1>
+        <Quotation />
+        <div className="mainContainer">
+          <div className="photoContainer">
+            <Photo url={database.url} title={database.title}/>
+          </div>
+          <div>
+            <Description credit={database.copyright} date={database.date} title={database.title} explanation={database.explanation}/>
+          </div>
+        </div>
+        <Explore />
       </div>
-      <div className='button'>
-        <button>Random Image Generator</button>
-      </div>
-      <div>
-        <Description credit={database.copyright} date={database.date} title={database.title} explanation={database.explanation}/>
-      </div>
-    </div>
   );
 }
 
