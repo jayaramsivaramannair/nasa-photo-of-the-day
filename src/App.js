@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import axios from 'axios';
+
+import { Container, Row, Col} from 'reactstrap'
 import Description from './Description';
 import Photo from './Photo';
 import Quotation from './Quotation';
@@ -45,15 +48,19 @@ function App() {
       <div className="App">
         <h1 className='header'>NASA Photo of the Day - Explore & Wonder!</h1>
         <Quotation />
-        <div className="mainContainer">
-          <div className="photoContainer">
-            {/*Conditionally renders the element based on the type of media*/}
-            {database.media_type === 'video' ? <iframe src={database.url} title={database.title} width={400} height={400} loading={'eager'}></iframe> : <Photo url={database.url} title={database.title}/>}
-          </div>
-          <div>
-            <Description credit={database.copyright ? database.copyright : "No Information Available"} date={database.date} title={database.title} explanation={database.explanation}/>
-          </div>
-        </div>
+        <Container>
+          <Row>
+            <Col>
+              {/*Conditionally renders the element based on the type of media*/}
+              {database.media_type === 'video' ? <iframe src={database.url} title={database.title} width={400} height={400} loading={'eager'}></iframe> : <Photo url={database.url} title={database.title}/>}
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Description credit={database.copyright ? database.copyright : "No Information Available"} date={database.date} title={database.title} explanation={database.explanation}/>
+            </Col>
+          </Row>
+        </Container>
         <Explore date={date} onChange={(date) => setDate(date)}/>
       </div>
   );

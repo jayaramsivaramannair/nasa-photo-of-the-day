@@ -1,50 +1,7 @@
 
-.header {
-  text-align: center;
-  font-family: 'Orbitron', sans-serif
-}
-
 .quote {
   font-family: 'philosopher', sans-serif;
   font-size: 10px;
 }
 
-.imageContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.image {
-  height: 400px;
-  width: 400px;
-}
-
-.photoDescription {
-  border: 2px solid green;
-  border-radius: 5%;
-}
-
-.photoDescription span{
-  font-weight: bold;
-}
-
-.photoDescription p {
-  padding: 0px 10px;
-  font-family: 'philosopher', sans-serif;
-  font-size: 0.75rem;
-}
-
-.mainContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.photoContainer {
-  padding: 5px;
-}
-
-.calendar {
-  font-family: 'philosopher', sans-serif;
-}
