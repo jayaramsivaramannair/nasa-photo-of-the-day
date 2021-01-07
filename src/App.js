@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import axios from 'axios';
+import styled from 'styled-components';
 
 import { Container, Row, Col} from 'reactstrap'
 import Description from './Description';
@@ -10,6 +11,14 @@ import Quotation from './Quotation';
 import Explore from './Explore';
 
 const myApiKey = "Z2STqlW4cLLKE802inaTm6UmBb0I6tleu2xo7OWY"
+
+const AppContainer = styled.div`
+  font-family: 'philosopher', sans-serif;
+  color: #760EF4;
+  background-color: #FB9C01;
+`;
+
+
 
 function App() {
 
@@ -45,7 +54,7 @@ function App() {
 
   if(!database.url) return <h3>Loading....</h3>
   return (
-      <div className="App">
+      <AppContainer>
         <h1 className='header'>NASA Photo of the Day - Explore & Wonder!</h1>
         <Quotation />
         <Container>
@@ -62,7 +71,7 @@ function App() {
           </Row>
         </Container>
         <Explore date={date} onChange={(date) => setDate(date)}/>
-      </div>
+      </AppContainer>
   );
 }
 

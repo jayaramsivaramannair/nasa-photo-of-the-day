@@ -9,8 +9,10 @@ function Description({credit, date, title,explanation}) {
                 <CardBody>
                     <CardTitle tag="h3">{title}</CardTitle>
                     <CardSubtitle tag="h5">Copyright: {credit}</CardSubtitle>
+                </CardBody>
+                <CardBody>
                     <CardSubtitle tag="h5">Date: {date}</CardSubtitle>
-                    <CardText tag="p">Explanation: {explanation}</CardText>
+                    <CardText tag="p">{explanation}</CardText>
                 </CardBody>
             </Card>
         </div>
