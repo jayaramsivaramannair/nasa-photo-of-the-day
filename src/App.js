@@ -12,10 +12,11 @@ import Explore from './Explore';
 
 const myApiKey = "Z2STqlW4cLLKE802inaTm6UmBb0I6tleu2xo7OWY"
 
+//Styled Components
 const AppContainer = styled.div`
   font-family: 'philosopher', sans-serif;
-  color: #760EF4;
-  background-color: #FB9C01;
+  color: AliceBlue;
+  background-color: #6a0dad;
 `;
 
 
@@ -61,7 +62,8 @@ function App() {
           <Row>
             <Col>
               {/*Conditionally renders the element based on the type of media*/}
-              {database.media_type === 'video' ? <iframe src={database.url} title={database.title} width={400} height={400} loading={'eager'}></iframe> : <Photo url={database.url} title={database.title}/>}
+              {database.media_type === 'video' ? <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src={database.url} title={database.title} allowfullscreen></iframe></div> 
+              : <Photo url={database.url} title={database.title}/>}
             </Col>
           </Row>
           <Row>
